@@ -95,7 +95,7 @@ shutdown -h now
 
 1. `configuration.nix`を置き換える
 ```bash
-sudo rm /etc/nixos/configuration.nix && curl -fsSL https://raw.githubusercontent.com/dev-hayato-shiina/experimental-nixos/main/configuration.nix -o /etc/nixos/configuration.nix
+sudo rm /etc/nixos/configuration.nix && sudo curl -fsSL "https://raw.githubusercontent.com/dev-hayato-shiina/experimental-nixos/main/configuration.nix" -o /etc/nixos/configuration.nix
 ```
 
 2. NixOS Rebuild
