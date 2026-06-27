@@ -53,7 +53,7 @@ _実験的な NixOS Configuration_
 |---|---|
 |名前|SSH|
 |プロトコル|TCP|
-|ホストIP|-|
+|ホストIP|127.0.0.1|
 |ホストポート|2222|
 |ゲストIP|-|
 |ゲストポート|22|
@@ -115,4 +115,13 @@ sudo rm /etc/nixos/configuration.nix && sudo curl -fsSL "https://raw.githubuserc
 2. NixOS Rebuild
 ```bash
 cd /etc/nixos && sudo nixos-rebuild switch
+```
+
+---
+
+### SSH接続
+
+ホストPCで以下のコマンドを実行することでSSH接続することができます
+```bash
+ssh -p 2222 chooroo@localhost
 ```
