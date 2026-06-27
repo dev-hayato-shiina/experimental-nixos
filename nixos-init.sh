@@ -26,3 +26,16 @@ mount /dev/disk/by-label/nixos /mnt
 mkdir -p /mnt/boot
 mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
 swapon /dev/sda2
+
+# configuration.nix, hardware-configuration.nix の生成
+nixos-generate-config --root /mnt
+
+# configuration.nix を置き換える
+rm /mnt/etc/nixos/configuration.nix
+curl -fsSL https://raw.githubusercontent.com/dev-hayato-shiina/experimental-nixos/main/configuration.nix -o /mnt/etc/nixos/configuration.nix
+
+# NixOS Install
+nixos-install
+
+# nixos-init.shを削除する
+rm /root/nixos-init.sh
