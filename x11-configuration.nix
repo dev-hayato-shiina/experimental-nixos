@@ -66,9 +66,9 @@
         xterm
       ];
 
+      # VirtualBox on Wayland/Niri host では Super/Mod4 がホスト側に奪われやすい。
+      # ゲスト内のi3操作は Alt(Mod1) に逃がす。
       configFile = pkgs.writeText "i3-x11-learning.conf" ''
-        # VirtualBox on Wayland/Niri host では Super/Mod4 がホスト側に奪われやすい。
-        # ゲスト内のi3操作は Alt(Mod1) に逃がす。
         set $mod Mod1
 
         font pango:monospace 10
