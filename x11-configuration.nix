@@ -66,34 +66,37 @@
         xterm
       ];
 
-      configFile = pkgs.writeText "i3-x11-learning.conf" ''
-        set $mod Mod4
-        font pango:monospace 10
+　　　　configFile = pkgs.writeText "i3-x11-learning.conf" ''
+　　　　  # VirtualBox on Wayland/Niri host では Super/Mod4 がホスト側に奪われやすい。
+  　　　　# ゲスト内のi3操作は Alt(Mod1) に逃がす。
+  　　　　set $mod Mod1
 
-        floating_modifier $mod
+  　　　　font pango:monospace 10
 
-        bindsym $mod+Return exec xterm
-        bindsym $mod+d exec dmenu_run
-        bindsym $mod+Shift+q kill
-        bindsym $mod+Shift+r restart
-        bindsym $mod+Shift+e exit
+  　　　　floating_modifier $mod
 
-        bindsym $mod+h focus left
-        bindsym $mod+j focus down
-        bindsym $mod+k focus up
-        bindsym $mod+l focus right
+  　　　　bindsym $mod+Return exec xterm
+  　　　　bindsym $mod+d exec dmenu_run
+  　　　　bindsym $mod+Shift+q kill
+  　　　　bindsym $mod+Shift+r restart
+  　　　　bindsym $mod+Shift+e exit
 
-        bindsym $mod+Shift+h move left
-        bindsym $mod+Shift+j move down
-        bindsym $mod+Shift+k move up
-        bindsym $mod+Shift+l move right
+  　　　　bindsym $mod+h focus left
+  　　　　bindsym $mod+j focus down
+  　　　　bindsym $mod+k focus up
+  　　　　bindsym $mod+l focus right
 
-        bindsym $mod+f fullscreen toggle
+  　　　　bindsym $mod+Shift+h move left
+  　　　　bindsym $mod+Shift+j move down
+  　　　　bindsym $mod+Shift+k move up
+  　　　　bindsym $mod+Shift+l move right
 
-        bar {
-          status_command i3status
-        }
-      '';
+  　　　　bindsym $mod+f fullscreen toggle
+
+  　　　　bar {
+    　　　　status_command i3status
+  　　　　}
+　　　　'';
     };
   };
 
