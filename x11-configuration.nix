@@ -160,4 +160,37 @@
     ++ lib.optional (builtins.hasAttr "xtrace" pkgs) pkgs.xtrace;
 
   system.stateVersion = "26.05";
+
+  # 外部からSSH接続できるようにする。
+  # 例:
+  #   ssh chooroo@<このNixOSマシンのIPアドレス>
+  services.openssh = {
+    enable = true;
+
+    # SSHの待受ポート。
+    ports = [ 22 ];
+
+    # OpenSSH用のポートをNixOS firewallで自動開放する。
+    # デフォルトでも true だが、学習用に明示。
+    openFirewall = true;
+
+    settings = {
+      # パスワードログインを許可。
+      # すでに chooroo に hashedPassword があるので、そのパスワードで入れる。
+      PasswordAuthentication = true;
+
+      # keyboard-interactive 認証も許可。
+      # sshd 側で password / keyboard-interactive が絡むので明示しておく。
+      KbdInteractiveAuthentication = true;
+
+      # root直ログインは禁止。
+      PermitRootLogin = "no";
+
+      # SSHログインできるユーザーを chooroo に限定。
+      AllowUsers = [ "chooroo" ];
+
+      # X11転送は不要なら切る。
+      X11Forwarding = false;
+    };
+  };
 }
