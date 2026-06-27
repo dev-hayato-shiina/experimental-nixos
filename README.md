@@ -100,5 +100,5 @@ sudo rm /etc/nixos/configuration.nix && sudo curl -fsSL "https://raw.githubuserc
 
 2. NixOS Rebuild
 ```bash
-sudo nixos-rebuild switch
+cd /etc/nixos && sudo nixos-rebuild switch
 ```
